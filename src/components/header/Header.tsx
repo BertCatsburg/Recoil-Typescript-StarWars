@@ -3,8 +3,8 @@ import { AppBar, Toolbar, Button, makeStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    spacer: {
-        ...theme.mixins.toolbar
+    outer: {
+        height: '6em'
     },
     appbar: {
         height: '5em'
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 export const Header: React.FC = () => {
     const classes = useStyles();
     return (
-        <React.Fragment>
+        <div className={classes.outer}>
             <AppBar className={classes.appbar}>
                 <Toolbar disableGutters className={classes.toolbar}>
                     <Link to={'/home'} className={classes.linkLink}>
@@ -35,19 +35,18 @@ export const Header: React.FC = () => {
                             Home
                         </Button>
                     </Link>
-                    <Link to={'about'} className={classes.linkLink}>
+                    <Link to={'/about'} className={classes.linkLink}>
                         <Button className={classes.linkButton} variant={'contained'}>
                             About Us
                         </Button>
                     </Link>
-                    <Link to={'swperson'} className={classes.linkLink}>
+                    <Link to={'starwars/person'} className={classes.linkLink}>
                         <Button className={classes.linkButton} variant={'contained'}>
                             Get a Star Wars Person
                         </Button>
                     </Link>
                 </Toolbar>
             </AppBar>
-            <div className={classes.spacer} />
-        </React.Fragment>
+        </div>
     );
 };
