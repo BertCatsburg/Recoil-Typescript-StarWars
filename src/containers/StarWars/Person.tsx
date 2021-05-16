@@ -14,7 +14,12 @@ const SWPerson: React.FC = () => {
     return (
         <React.Fragment>
             <input type={'text'} value={personNumber} onChange={handleChange} />
-            <p>{person.name}</p>
+            <p>Person = {person.name}</p>
+            <ul>
+                {person.films.map((p: any) => {
+                    return <li key={p}>{p}</li>;
+                })}
+            </ul>
         </React.Fragment>
     );
 };
