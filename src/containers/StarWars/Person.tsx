@@ -6,14 +6,21 @@ import { useForm } from 'react-hook-form';
 import { Button, Typography } from '@material-ui/core';
 
 const SWPerson: React.FC = () => {
+    // * The Recoil Atom
     const [personNumber, setPersonNumber] = useRecoilState(PersonNumberState);
+    // * The Recoil Selector
     const person = useRecoilValue(getStarWarsPerson);
 
+    // * We need a Form (React-Hook-Form)
     const { register, handleSubmit } = useForm();
 
+    // * When a SubmitButton is clicked
     const onSubmit = (data: any) => {
+        // * Set the PersonNumber in the Atom, and automatically the Selector will react
         setPersonNumber(data.personNumber);
     };
+
+    // * Cosmetic: Enter the field and it's selected.
     const onFocusInput = (event: any) => event.target.select();
 
     return (
@@ -37,6 +44,7 @@ const SWPerson: React.FC = () => {
 
             <ul>
                 {person.films.map((p: any) => {
+                    // * Show all movies the person played in
                     return <li key={p}>{p}</li>;
                 })}
             </ul>
